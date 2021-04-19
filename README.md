@@ -32,7 +32,7 @@ Ellos asignan una de esas cuentas para gestionar los gastos de la casa. Cada vez
 #### Se pide poder generar un gasto por un importe determinado en la casa, y que eso se vea afectado en la cuenta elegida previamente.
 
 ## Manteniendo la casa
-Cada cierto tiempo Pepe y Julián hacen un mantenimiento de la casa y los gastos que producen dependen de la estrategia de ahorro que hayan consensuado. Existen tres _estrategias de ahorro_:
+Cierto día de la semana Pepe y Julián hacen un mantenimiento de la casa. Nos informaron que ello consiste en generar gastos y afectar la casa según de la estrategia de ahorro que hayan consensuado con anterioridad. Por ahora nos describieron las siguientes _estrategias de ahorro_, pero hay que tener en cuenta que se pueden agregar más en el futuro:
 
 1. **Mínimo e indispensable**: si la casa no tiene los víveres suficientes, compran lo necesaria para que alcance (o sea, llegar al 40%). El gasto de comprar víveres se calcula como `porcentaje a comprar * calidad`, siendo la calidad un valor determinado al elegir esta estrategia. 
 
@@ -40,9 +40,11 @@ Cada cierto tiempo Pepe y Julián hacen un mantenimiento de la casa y los gastos
 	- Si la casa está en orden, se llena de víveres al 100%, sino solamente aumenta un 40%, siempre con una calidad de `5`.
 	- Además, si el saldo, después de comprar los víveres, en la cuenta alcanza para hacer todas las reparaciones _y sobran más de 1000 pesos_, se hacen, sino no.
 
-#### Se pide poder hacer un mantenimiento a la casa, sufriendo los efectos según la estrategia de ahorro.
+#### Se pide poder 
+- Poder elegir una estrategia de ahorro para la casa.
+- Hacerle un mantenimiento a la casa, sufriendo los efectos según la estrategia de ahorro elegida previamente.
 
-> **Caso de Prueba**: Si la casa tiene 50% de los víveres, necesita 100 pesos para reparaciones y tiene asociada la cuenta corriente con 1000 pesos de saldo. Al hacer un mantenimiento con la estrategia _Full_:
+> **Caso de Prueba**: Si la casa tiene 50% de los víveres, necesita 100 pesos para reparaciones, tiene asociada la cuenta corriente con 1000 pesos de saldo y una estrategia de ahorro _Full_. Al hacer un mantenimiento de la casa:
 > - Como la casa no está en orden, aumenta 40% de sus víveres gastando `40 * 5 = 200` pesos.
 > - Si bien luego les alcanza para hacer las reparaciones, no sobrarían 1000 pesos, así que no se hacen.
 > - _Verificar_ que la casa queda con 90% de víveres, mantiene los 100 pesos para reparaciones, y la cuenta corriente queda con 800 pesos.

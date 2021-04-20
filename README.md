@@ -2,6 +2,8 @@
 
 Pepe y Julián viven juntos, y nos pidieron que les ayudemos con un sistema para administrar los gastos de la casa.
 
+> **Aclaración**: Para este enunciado se pide tanto la implementación de los objetos que resuelven los requerimientos planteados, como los tests descriptos en los _casos de prueba_ como mínimo (si quieren hacer más tests también son bienvenidos).
+
 ## La casa
 De la casa se conoce la cantidad de víveres que tiene (en porcentaje) y un monto (en pesos) necesario para reparaciones. Además se quiere saber:
 - Si la casa _tiene víveres suficientes_: mayor al 40%

@@ -1,0 +1,10 @@
+import casa.*
+
+describe "La casa" {
+	test "Tiene viveres suficientes, hay reparaciones y no está en orden"{
+		casa.montoDeReparacion(1000)
+		assert.that(casa.viveresSuficientes())
+		assert.that(casa.hayQueHacerReparaciones())
+		assert.that(not casa.casaEnOrden())	
+	}
+}

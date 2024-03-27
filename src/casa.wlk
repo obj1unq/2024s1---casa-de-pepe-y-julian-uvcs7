@@ -1,4 +1,4 @@
-
+// CASA
 object casa {
 	
 	var porcentajeViveres = 50
@@ -24,5 +24,38 @@ object casa {
 	}
 	method casaEnOrden(){
 		return self.viveresSuficientes() && not self.hayQueHacerReparaciones()
+	}
+}
+// CUENTAS BANCARIAS
+object cuentaCorriente {
+	
+	var saldo = 0
+	
+	method saldo(){
+		return saldo
+	}
+	method depositar(montoADepositar){
+		saldo += montoADepositar
+	}
+	method extraer(montoAExtraer){
+		saldo -= montoAExtraer
+	}
+}
+object cuentaConGastos {
+	
+	var saldo = 0
+	
+	method saldo(){
+		return saldo
+	}
+	method depositar(montoADepositar){
+		saldo += montoADepositar
+		saldo -= self.costoPorDepositar()
+	}
+	method costoPorDepositar(){
+		return 20
+	}
+	method extraer(montoAExtraer){
+		saldo -= montoAExtraer
 	}
 }

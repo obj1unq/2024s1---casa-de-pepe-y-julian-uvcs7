@@ -8,3 +8,9 @@ describe "La casa" {
 		assert.that(not casa.casaEnOrden())	
 	}
 }
+describe "Cuenta con gastos" {
+	test "Cuenta vacía con 20 de costo por operación, deposita mil. Saldo, 980"{
+		cuentaConGastos.depositar(1000)
+		assert.equals(980, cuentaConGastos.saldo())	
+	}
+}

@@ -10,7 +10,24 @@ describe "La casa" {
 }
 describe "Cuenta con gastos" {
 	test "Cuenta vacía con 20 de costo por operación, deposita mil. Saldo, 980"{
+		cuentaConGastos.saldo(0)
+		cuentaConGastos.costoPorDepositar(20)
 		cuentaConGastos.depositar(1000)
 		assert.equals(980, cuentaConGastos.saldo())	
+	}
+}
+
+describe "Cuenta Combinada" {
+	test "Depositar 100 pesos, sumando 50 pesos efectivos"{
+	// Estado Inicial Pedido:
+		cuentaConGastos.saldo(0)
+		cuentaConGastos.costoPorDepositar(50)
+		cuentaCorriente.saldo(500)
+	// 	Caso prueba:
+		cuentaCombinada.depositar(100)
+		cuentaCombinada.extraer(200)
+		assert.equals(50, cuentaConGastos.saldo())
+		assert.equals(300, cuentaCorriente.saldo())
+		assert.equals(350, cuentaCombinada.saldoCombinado())
 	}
 }

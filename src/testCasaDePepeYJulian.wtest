@@ -2,32 +2,45 @@ import casa.*
 
 describe "La casa" {
 	test "Tiene viveres suficientes, hay reparaciones y no está en orden"{
-		casa.montoDeReparacion(1000)
-		assert.that(casa.viveresSuficientes())
-		assert.that(casa.hayQueHacerReparaciones())
-		assert.that(not casa.casaEnOrden())	
+		casaDePepeYJulian.montoDeReparaciones(1000)
+		assert.that(casaDePepeYJulian.viveresSuficientes())
+		assert.that(casaDePepeYJulian.hayQueHacerReparaciones())
+		assert.that(not casaDePepeYJulian.casaEnOrden())	
 	}
 }
-describe "Cuenta con gastos" {
-	test "Cuenta vacía con 20 de costo por operación, deposita mil. Saldo, 980"{
+
+describe "Cuentas bancarias" {
+	test "CCG: Vacía con 20 de costo por operación, deposita mil. Saldo, 980"{
 		cuentaConGastos.saldo(0)
 		cuentaConGastos.costoPorDepositar(20)
 		cuentaConGastos.depositar(1000)
 		assert.equals(980, cuentaConGastos.saldo())	
 	}
-}
-
-describe "Cuenta Combinada" {
-	test "Depositar 100 pesos, sumando 50 pesos efectivos"{
-	// Estado Inicial Pedido:
+	test "CC: Depositar 100 pesos, sumando 50 pesos efectivos"{
+	// Estado inicial pedido:
 		cuentaConGastos.saldo(0)
 		cuentaConGastos.costoPorDepositar(50)
 		cuentaCorriente.saldo(500)
-	// 	Caso prueba:
+	// Caso prueba:
 		cuentaCombinada.depositar(100)
 		cuentaCombinada.extraer(200)
 		assert.equals(50, cuentaConGastos.saldo())
 		assert.equals(300, cuentaCorriente.saldo())
 		assert.equals(350, cuentaCombinada.saldoCombinado())
+	}
+}
+
+describe "Manteniendo la casa" {
+	test "La casa tiene 50 de viveres, $100 de reparaciones, mil en cc y estrategia full"{
+	// Estado inicial pedido:
+		casaDePepeYJulian.porcentajeViveres(50)
+		casaDePepeYJulian.montoDeReparaciones(100)
+		cuentaCorriente.saldo(1000)
+		casaDePepeYJulian.estrategiaDeAhorro(full)
+	// Caso prueba:
+		casaDePepeYJulian.hacerMantenimiento()
+		assert.equals(90, casaDePepeYJulian.porcentajeViveres())
+		assert.equals(800, cuentaCorriente.saldo())
+		assert.equals(100, casaDePepeYJulian.montoDeReparaciones())
 	}
 }

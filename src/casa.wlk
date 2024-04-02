@@ -1,4 +1,4 @@
-// CASA
+// CASAS
 object casaDePepeYJulian {
 	
 	var porcentajeViveres = 50
@@ -35,8 +35,6 @@ object casaDePepeYJulian {
 		return self.viveresSuficientes() 
 			   && not self.hayQueHacerReparaciones()
 	}
-	
-	// REVISAR ABAJO
 	
 	method estrategiaDeAhorro(_estrategiaDeAhorro){
 		estrategiaDeAhorro = _estrategiaDeAhorro

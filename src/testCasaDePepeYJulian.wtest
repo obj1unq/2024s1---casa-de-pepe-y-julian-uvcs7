@@ -44,3 +44,10 @@ describe "Manteniendo la casa" {
 		assert.equals(100, casaDePepeYJulian.montoDeReparaciones())
 	}
 }
+
+/*
+* PARA PENSAR: Si se agrega una nueva casa, ¿Es posible usar estas estrategias con ella? 
+* Sí, es posible. Solamente debería crear una nueva casa de otra/as persona/as.
+* ¿Qué mensajes debería entender? 
+* Los mismos mensajes que la casa de Pepe y Julián. No puede faltar ninguno.
+*/

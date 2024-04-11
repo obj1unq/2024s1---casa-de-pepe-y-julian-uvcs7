@@ -53,7 +53,7 @@ object minimoEIndispensable {
 	var calidad = 5
 	
 	method comprarViveres(casa){
-		return if (not casa.viveresSuficientes()){
+		if (not casa.viveresSuficientes()){
 					self.porcentajeAComprar(casa) * calidad
 		} else {
 			
@@ -61,7 +61,7 @@ object minimoEIndispensable {
 	}
 	
 	method porcentajeAComprar(casa){
-		return (0.4 - casa.porcentajeViveres())
+		return (40 - casa.porcentajeViveres())
 	}
 	
 	method calidad(_calidad){
@@ -76,9 +76,10 @@ object full {
 	
 	const calidad = 5
 	
+	//FALTAN SUBTAREAS
 	method comprarViveres(casa){
-		return if (casa.casaEnOrden()){
-					casa.aumentoPorcentajeViveres(100 - casa.porcentajeViveres())
+		if (casa.casaEnOrden()){
+			casa.aumentoPorcentajeViveres(100 - casa.porcentajeViveres())
 		} else {
 			casa.aumentoPorcentajeViveres(40)
 			cuentaCombinada.extraer(40 * calidad)
@@ -88,9 +89,9 @@ object full {
 	method porcentajeAComprar(casa){
 		return (40 - casa.porcentajeViveres())
 	}
-	
+	//FALTAN SUBTAREAS
 	method siAlcanzaHacerReparaciones(casa){
-		return if (cuentaCombinada.saldoCombinado() > 1000 + casa.montoDeReparaciones()
+		if (cuentaCombinada.saldoCombinado() > 1000 + casa.montoDeReparaciones()
 					&& casa.hayQueHacerReparaciones()) {
 			cuentaCombinada.extraer(casa.montoDeReparaciones())
 			casa.montoDeReparaciones(0) 
@@ -157,21 +158,32 @@ object cuentaConGastos {
 
 object cuentaCombinada {
 	
+	var cuentaPrimaria = cuentaCorriente
+	var cuentaSecundaria = cuentaConGastos
+	
+	method cuentaPrimaria (_cuentaPrimaria) {
+		cuentaPrimaria = _cuentaPrimaria
+	}
+	
+	method cuentaSecundaria (_cuentaSecundaria) {
+		cuentaSecundaria = _cuentaSecundaria
+	}
+	
 	method saldoCombinado(){
-		return cuentaCorriente.saldo() 
-				+ cuentaConGastos.saldo()
+		return cuentaPrimaria.saldo() 
+				+ cuentaSecundaria.saldo()
 	}
 	
 	method depositar(montoADepositar){
-		cuentaConGastos.depositar(montoADepositar)
+		cuentaSecundaria.depositar(montoADepositar)
 	}
 	
 	method extraer(montoAExtraer){
-		return if (cuentaConGastos.saldo() > montoAExtraer) {
-			cuentaConGastos.extraer(montoAExtraer)
+		return if (cuentaSecundaria.saldo() > montoAExtraer) {
+			cuentaSecundaria.extraer(montoAExtraer)
 		}
 		else {
-			cuentaCorriente.extraer(montoAExtraer)
+			cuentaPrimaria.extraer(montoAExtraer)
 		}
 	}
 }
